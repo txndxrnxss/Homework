@@ -1,0 +1,1 @@
+This script helps you convert temperature to Celsius, Kelvin, and Fahrenheit. Use it for free. <3
