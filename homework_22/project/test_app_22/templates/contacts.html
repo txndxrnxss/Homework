@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Webpage</title>
+
+</head>
+<body>
+    {% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/contact.css' %}">
+        <h1 class="contact">Контакты:</h1>
+            <div class="info">
+                <div class="name-info">
+                    <h3>Электронная почта:</h3>
+                        <div class="networks">
+                            <h3>
+                                Вконтакте:
+                                Инстаграм: 
+                                Телеграм:
+                            </h3> 
+                        </div>
+                    <h3>Телефон:</h3> 
+                </div>
+                <div class="result-info">
+                    <h3>sofia.gerdeva02@gmail.com</h3>
+                    <div class="networks">
+                        <h3>
+                            https://vk.com/sofiasssssss
+                            https://www.instagram.com/sofiasssssss/
+                            https://t.me/txndxrnxss
+                        </h3> 
+                    </div>
+                <h3>+375 (29) 458-56-56</h3> 
+                </div>
+            </div>
+    {% endblock %}
+</body>
+</html>
