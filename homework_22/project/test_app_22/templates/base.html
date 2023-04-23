@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% load static %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="undefined" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    {% block header %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img class="logo" src="{% static 'img/sony.png' %}" width="40" height="32" alt="">
+          </a>
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0 text-center">
+            <li class="nav-item">
+               <a class="nav-link px-2 link-secondary" aria-current="page" href="/test_app_22/home/">Главная</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    {% endblock header %}
+
+    {% block content %}
+    {% endblock content %}
+</body>
+</html>

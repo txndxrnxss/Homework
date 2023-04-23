@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Webpage</title>
+    
+    
+</head>
+<body>
+    {% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <div class="conteiner">
+        <div class="img-conteiner">
+            <img class="img-bg" src="{% static 'img/photo_2023-04-21_22-58-55.jpg' %}" alt="Alternative Text">
+        </div>
+        
+        <div class="info-link">
+                <h1 class="asv">Алекcандрова</h1>
+                <h1 class="asv">Софья</h1>
+                <h1 class="asv">Владимировна</h1> 
+            <div class="knopki">
+                <a href='/test_app_22/education/'>Образование</a>
+                <a href='/test_app_22/skills/'>Навыки</a>
+                <a href='/test_app_22/contact/'>Контакты</a>
+            </div>
+
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>

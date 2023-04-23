@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Webpage</title>
+
+</head>
+<body>
+    {% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+        <div class="aupprb">
+            <h1 class="aupprb-1">Академия Управления при</h1>
+            <h1 class="aupprb-1">Президенте Республики Беларусь</h1>
+            <h2 class="iuk">Институт Управленческих Кадров</h2>
+            <h4 class="gue">Специальность: Государственное управление и экономика</h4>
+        </div>
+    {% endblock %}
+</body>
+</html>
