@@ -1,0 +1,29 @@
+.container{
+    display: flex;
+    margin-left: 15%;
+    padding-top: 15%;
+
+}
+.category{
+font-size: 30px;
+    flex-direction: column;
+    display: flex;
+    padding: 0 0 0 200px;
+}
+.category a{
+    margin-top: 30px;
+}
+
+.game a{
+    margin-top: 13px;
+}
+.game{
+    font-size: 30px;
+    flex-direction: column;
+    display: flex;
+    padding: 0 0 0 200px;
+}
+
+body{
+    background: #000;
+}

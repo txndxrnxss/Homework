@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Webpage</title>  
+</head>
+<body>
+    {% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+        <div class="ct-conteiner">
+                <div class="ct-info">
+                    {% for i in objects %}
+                    <span class = 'ct_name'>Категория: {{ i.title }}</span>
+                    <span class = 'ct_dc'>{{ i.description }}</span>
+                    {% endfor %}
+                </div>
+                <div class="ct-game-name">
+                    {% for i in ctg %}
+                    <a href="../game/{{ i.name }}" class = 'ct_name'>{{ i.name }}</a>
+                    {% endfor %}
+                </div>
+        </div>
+    {% endblock %}
+</body>
+</html>

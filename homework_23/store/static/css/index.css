@@ -1,0 +1,29 @@
+body{
+    font-size: 30px;
+}
+.ct-conteiner{
+    margin-top: 10%;
+    text-align: center;
+    justify-content: center;
+    
+}
+.ct-conteiner div{
+    padding: 30px;
+}
+.ct-info span{
+    padding: 30px;
+} 
+.ct_dc{
+    margin-left: 30%;
+    max-width: 500px;
+    display: flex;
+}
+
+.ct-info{
+
+    display: block;
+}
+.ct-game-name a{
+    display: block;
+    padding: 15px;
+}

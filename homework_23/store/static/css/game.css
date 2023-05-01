@@ -1,0 +1,18 @@
+.game-img{
+    max-width: 300px;
+}
+
+.game-container{
+    margin-top: 14%;
+    display: flex;
+    justify-content: center;
+}
+
+.game-info span{
+    padding: 13px;
+    display: block;
+}
+
+.game-info{
+    max-width: 300px;
+}

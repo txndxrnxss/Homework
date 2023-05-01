@@ -1,0 +1,37 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Webpage</title>
+    
+    
+</head>
+<body>
+    {% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/game.css' %}">
+    {% for i in objects %}
+    <div class="game-container">
+        <img src="{% static 'img' %}/{{ i.name }}.jpg" alt="" class="game-img">
+        <div class="game-info"> 
+            <span class = 'g_name'>{{ i.name }}</span>
+            {% if i.category == 1 %}
+            <span class = 'g_ct'>Категория: Соревновательные</span>
+            <span class = 'g_dc'>{{ i.description }}</span>
+            <span class = 'g_price'>Цена: {{ i.price }} $</span>
+            <span class = 'g_pd'>Дата добавления: {{ i.pub_date }}</span>
+            <span class = 'g_rd'>Дата создания: {{ i.release_date }}</span>
+            {% else %}
+            <span class = 'g_ct'>Категория: Хорроры</span>
+            <span class = 'g_dc'>{{ i.description }}</span>
+            <span class = 'g_price'>Цена: {{ i.price }}</span>
+            <span class = 'g_pd'>Дата добавления: {{ i.pub_date }}</span>
+            <span class = 'g_rd'>Дата создания: {{ i.release_date }}</span>
+            {% endif %}
+        </div>
+    </div> 
+    {% endfor %}
+    {% endblock %}
+</body>
+</html>
