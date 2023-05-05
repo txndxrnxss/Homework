@@ -1,61 +1,52 @@
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect, HttpResponse
-from django.shortcuts import render
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import logout
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView
 from .forms import LoginForm
-# import requests
-
+from .validator import *
+from blog.models import User, Comment
+from django.db import IntegrityError
 
 def register(request):
-    """
-    Представлении регистрации
-    """
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-        # form.save()
-            nickname = form.cleaned_data.get('nickname')
-            login = form.cleaned_data.get('login')
-            password = form.cleaned_data.get('password')
-            print(nickname, login, password)
-            messages.success(request, f'Создан аккаунт {nickname}!')
-            return redirect(reverse('shop:index'))
+    if 'user_info' in request.COOKIES:
+        return redirect('http://127.0.0.1:8000/accounts/xxx')
     else:
-        form = UserCreationForm()
-    return render(request, 'registration.html', {'form': form})
-
-
-def login_view(request):
-    """
-    Представление входа в аккаунт, а также перенаправление.
-    """
-    if request.method == 'POST':
-        form = LoginForm(request.POST)
-        next_url = request.POST.get('next') # необходимо для перенаправление на ресурс
-        if form.is_valid():
-            cd = form.cleaned_data
-            user = authenticate(nickname=cd['nickname'], password=cd['password'])
-            if user is not None:
-                if user.is_active:
-                    login(request, user)
-                    return redirect(next_url)
+        if request.method == 'POST':
+            email = request.POST['email']
+            login = request.POST['login']
+            password = request.POST['password']
+            nickname = request.POST['nickname']
+            check_valid = Validator(login, password, email).validate()
+            if check_valid == True:
+                check_email = User.objects.filter(email=email).first()
+                check_login = User.objects.filter(login=login).first() 
+                if not check_email and not check_login:
+                    user = User(email=email, login=login, password=password, nickname=nickname)
+                    user.save()
+                    response = redirect('http://127.0.0.1:8000/accounts/xxx')
+                    response.set_cookie('user_info' , login + ' ' + password + ' ' + email)
+                    return response
                 else:
-                    return HttpResponse('Disabled account')
+                    return render(request, 'registration.html', {'error_info': 'Пользователь с такой почтой или логином уже существует!'})
             else:
-                return HttpResponse('Invalid login')
-    else:
-        form = LoginForm()
-    return render(request, 'login.html', {'form': form})
+                return render(request, 'registration.html', context={'check_valid': check_valid})
+        else:
+            return render(request, 'registration.html')
 
+def registration(request):
+    if 'user_info'not in request.COOKIES:
+        return redirect('http://127.0.0.1:8000/accounts/registration/')
+    else:
+        return render(request, 'base.html', {'form': request.COOKIES['user_info']})
 
 def logout_view(request):
     """
     Представление разлогирования
     """
-    logout(request)
-    return redirect('http://127.0.0.1:8000/accounts/login/')
+    response = HttpResponseRedirect('http://127.0.0.1:8000/accounts/login/')
+    response.delete_cookie('user_info')
+    return response 

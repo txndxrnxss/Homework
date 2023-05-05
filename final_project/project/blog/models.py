@@ -1,9 +1,10 @@
 from django.db import models 
 
 class User(models.Model):
-    login = models.CharField(max_length = 30, verbose_name = "Login")
+    email = models.CharField(max_length = 30, verbose_name = "Email", unique=True)
+    login = models.CharField(max_length = 30, verbose_name = "Login", unique=True)
     password = models.CharField(max_length = 30, verbose_name = "Password")
-    nickname = models.CharField(max_length = 30, verbose_name = "Nickname") 
+    nickname = models.CharField(max_length = 30, verbose_name = "Nickname")
 
     def __str__(self):
         return f"{self.login}"
@@ -19,15 +20,8 @@ class Comment(models.Model):
     user = models.ForeignKey(User, null = True, blank = True, on_delete = models.SET_DEFAULT, default="")
     post_id = models.ForeignKey(Post, null = True, blank = True, on_delete = models.SET_DEFAULT, default="")
     info_comm = models.TextField(max_length = 200, verbose_name = "Comment's info", null = True)
-#     user = models.CharField(max_length = 30, verbose_name = "Game Name")
-#     # pub_date = models.DateField(verbose_name = "Add date")
-#     # release_date = models.DateField(verbose_name = "Release Time")
-#     # price = models.IntegerField(verbose_name = "Price")
-#     # slug = models.SlugField(max_length = 20, verbose_name = "Short Game's Name")
-#     # category = models.ForeignKey(Category, null = True, blank = True, on_delete = models.SET_DEFAULT, default="")
-
-#     # game_image = models.ImageField(upload_to = "Game", blank = True, null = True, verbose_name = "Game's Image")
-#     # is_active = models.BooleanField(verbose_name = "Game is active?")
+    # grade = models.IntegerField()
+    
 
     def __str__(self):
         return f"{self.info_comm}"
