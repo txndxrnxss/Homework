@@ -27,7 +27,9 @@
 
 .burger-menu {
     position: absolute;
-    margin-top: 60px; /* можно использовать margin-top вместо этого */
+    margin-top: 75px; /* можно использовать margin-top вместо этого */
+    min-width: 150px;
+    min-height: 80px;
     max-width: 400px;
     right: 50px;
     display: flex;
@@ -37,6 +39,7 @@
     animation: show 0.5s;
     animation-fill-mode: forwards;
     animation-delay: 0s;
+    border: 2px solid rgb(0,0,0,.1);
 }
 
 
@@ -50,3 +53,23 @@
     margin-top: 10px;
 }
 
+.burg-btn-close{
+    display: none;
+    border: 1px solid rgb(0,0,0,.1);
+    width: 55px;
+    padding: 12px, 4px, 12px, 4px;
+}
+
+.burg-btn-close a{
+
+    font-size: 25px;
+}
+
+.conteiner-burg, a, h7 {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 5px;
+    text-decoration: none;
+    color: #000;
+}

@@ -10,6 +10,7 @@ from .forms import LoginForm
 from .validator import *
 from blog.models import User, Comment
 from django.db import IntegrityError
+from django.db.models import Q
 
 def register(request):
     if 'user_info' in request.COOKIES:
@@ -27,7 +28,7 @@ def register(request):
                 if not check_email and not check_login:
                     user = User(email=email, login=login, password=password, nickname=nickname)
                     user.save()
-                    response = redirect('http://127.0.0.1:8000/accounts/xxx')
+                    response = redirect('http://127.0.0.1:8000/blog/home/')
                     response.set_cookie('user_info' , login + ' ' + password + ' ' + email)
                     return response
                 else:
@@ -37,16 +38,41 @@ def register(request):
         else:
             return render(request, 'registration.html')
 
+
+
 def registration(request):
     if 'user_info'not in request.COOKIES:
         return redirect('http://127.0.0.1:8000/accounts/registration/')
     else:
-        return render(request, 'base.html', {'form': request.COOKIES['user_info']})
+        return render(request, 'base_rg.html', {'form': request.COOKIES['user_info']})
+
+
+
+def login(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        password = request.POST['password']
+        print(email, password)
+        users = User.objects.filter(Q(email=email) & Q(password=password))
+        
+        print(users)
+        if users != []:
+            username = users.first().login
+            response = redirect('http://127.0.0.1:8000/blog/home/')
+            response.set_cookie('user_info' , str(username) + ' ' + password + ' ' + email)
+            return response
+    else:
+        if 'user_info'not in request.COOKIES:
+            return render(request, 'login.html')
+        else:
+            return render(request, 'home.html')
+    
+
 
 def logout_view(request):
     """
     Представление разлогирования
     """
-    response = HttpResponseRedirect('http://127.0.0.1:8000/accounts/login/')
+    response = HttpResponseRedirect('http://127.0.0.1:8000/blog/home/')
     response.delete_cookie('user_info')
     return response 

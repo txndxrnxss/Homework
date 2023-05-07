@@ -5,7 +5,7 @@ let burg_btn_close = document.getElementById('burg-btn-close')
 burger_btn.addEventListener('click', function() {
 window_burger.style.display = 'block';
 this.style.setProperty('display', 'none', 'important');
-burg_btn_close.style.setProperty('display', 'block', 'important');
+burg_btn_close.style.display = 'block';
 
 });
 
