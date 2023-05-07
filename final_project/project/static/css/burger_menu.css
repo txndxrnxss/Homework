@@ -1,0 +1,75 @@
+.lines {
+    position: fixed;
+    right: 15px;
+    top: 35px;
+    border-bottom: 17px double #000;
+    border-top: 6px solid #000;
+    content: "";
+    height: 5px;
+    width: 30px;
+    display: none;
+}
+
+.lines-2 {
+    position: absolute;
+    right: 15px;
+    top: 35px;
+    -webkit-box-pack: right;
+    -ms-flex-pack: right;
+    justify-content: right;
+    content: x;
+    height: 5px;
+    width: 30px;
+    font-size: 30px;
+    color: #000000;
+    display: none;
+}
+
+.burger-menu {
+    position: absolute;
+    margin-top: 75px; /* можно использовать margin-top вместо этого */
+    min-width: 150px;
+    min-height: 80px;
+    max-width: 400px;
+    right: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+    animation: show 0.5s;
+    animation-fill-mode: forwards;
+    animation-delay: 0s;
+    border: 2px solid rgb(0,0,0,.1);
+}
+
+
+.conteiner-burg div {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.burg-btn-close{
+    display: none;
+    border: 1px solid rgb(0,0,0,.1);
+    width: 55px;
+    padding: 12px, 4px, 12px, 4px;
+}
+
+.burg-btn-close a{
+
+    font-size: 25px;
+}
+
+.conteiner-burg, a, h7 {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 5px;
+    text-decoration: none;
+    color: #000;
+}
