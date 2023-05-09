@@ -1,10 +1,32 @@
 .logo{
     width: 100px;
+    margin-left: 10px;
 }
 
 
 nav{
-    background: rgb(215, 215, 215);
+    background: rgb(255, 255, 255);
     min-height: 45.6px;
+    box-shadow: 2px 4px 4px #00000029;
+
+}
+ 
+.post-block{
+    display: flex;
+    flex-direction: column-reverse;
+    margin-top: 10%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
 }
 
+.post-conteiner{
+    padding-bottom: 300px;
+    width: 600px;
+    height: 700px;
+
+}
+
+.post-title{
+    padding: 20px 0px 20px 0px;
+}

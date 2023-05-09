@@ -11,7 +11,7 @@ class User(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length = 50, verbose_name = "Post's Title")
-    description = models.CharField(max_length = 140, verbose_name = "Post's Description")
+    description = models.CharField(max_length = 400, verbose_name = "Post's Description")
     image = models.ImageField(upload_to="static/img/post", blank=True, null=True, verbose_name="Post's Image")
 
     def __str__(self):

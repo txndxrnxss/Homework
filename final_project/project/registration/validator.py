@@ -20,7 +20,7 @@ class Validator():
         self.password = password
         self.email = email
         self.pattern_login = r'^[A-Za-z0-9]{6,10}$'
-        self.pattern_password = r'^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$'
+        self.pattern_password = r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$'
         self.pattern_email = r'^\S+@\S+\.\S+$'
 
     def validate_login(self) -> bool:
@@ -29,7 +29,7 @@ class Validator():
 
     def validate_password(self) -> bool:
         if not match(self.pattern_password, self.password):
-            raise InvalidPassword('Ошибка! Пароль не соответствует следующим требованиям: не менее 8 символов, буквы в верхнем и нижнем регистре, не менее одного специального символа.')
+            raise InvalidPassword('Ошибка! Пароль не соответствует следующим требованиям: не менее 8 символов, обязательное наличие букв латинского алфавита в верхнем и нижнем регистре, а также цифр.')
 
     def validate_email(self) -> bool:
         if not match(self.pattern_email, self.email):
@@ -46,3 +46,5 @@ class Validator():
             return valid_error
         else:
             return True
+        
+print(Validator('txndxrnxss', 'aaaaaAa1', 'sofia.gerdeva@gmail.com').validate())

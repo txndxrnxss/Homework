@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{% static 'css/burger_menu.css' %}" integrity="undefined" crossorigin="anonymous">    
     <title>Document</title>
 </head>
-<body>
+<body id="head1">
   {% block header %}
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <img class="logo" src="{% static 'img/logo.png' %}" width="40" height="32" alt="">
@@ -29,7 +29,7 @@
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link px-2 link-secondary" aria-current="page" href="/test_app_22/home/">Главная</a>
+                        <a class="nav-link px-2 link-secondary" aria-current="page" href="#head1">Главная</a>
                     </li>
                 </ul>
             </div>
@@ -52,6 +52,7 @@
     </script>
   {% endblock header %}
     {% block content %}
+    
     {% endblock content %}
 </body>
 </html>

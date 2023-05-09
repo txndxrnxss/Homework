@@ -12,7 +12,34 @@
 <body>
 
     {% block content %}
+
+
+    <div class="post-block">
+        {% for i in big_data %}
+        <div class="post-conteiner">
+            <div class="post-img">
+                <img width="600px" height="350px" src="/../{{ i.image }}" alt="">
+                
+            </div>
+            <h4 class="post-title">
+                {{ i.title }}
+            </h4>
+            <h6 class="post-description">
+                {{ i.description }}
+            </h6>
+            <div class="post-user-submition">
+                <div class="post-comment">
+
+                </div>
+                <div class="post-grade">
     
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
     {% endblock %}
 
 </body>
