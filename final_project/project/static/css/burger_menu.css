@@ -26,12 +26,13 @@
 }
 
 .burger-menu {
-    position: absolute;
-    margin-top: 75px; /* можно использовать margin-top вместо этого */
-    min-width: 100px;
+    position: fixed;
+    background-color: white;
+    margin-top: 10px;
+    min-width: 150px;
     min-height: 80px;
-    max-width: 140px;
-    right: 10px;
+    max-width: 400px;
+    right: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,6 +45,7 @@
 
 
 .conteiner-burg div {
+    
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -53,10 +55,13 @@
     margin-top: 10px;
 }
 
+
+
 .burg-btn-close{
     display: none;
     border: 1px solid rgb(0,0,0,.1);
-    width: 55px;
+    height: 55px;
+    width: 56px;
     padding: 12px, 4px, 12px, 4px;
 }
 
