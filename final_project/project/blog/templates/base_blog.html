@@ -13,46 +13,41 @@
 </head>
 <body id="head1">
   {% block header %}
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-        <img class="logo" src="{% static 'img/logo.png' %}" width="40" height="32" alt="">
-        <div class="container-fluid text-center" style="display: flex; flex-direction: row-reverse;">
-            <a class="navbar-brand" href="#"></a>
-            <div class="d-flex flex-row-reverse">
-                <div type="button" class=" burg-btn-close " id = 'burg-btn-close' style="display: none;">
-                    <a id="burg-btn-close" >x</a>
-                </div>
-                <button class="navbar-toggler d-block" id = 'burger-btn' type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+    <nav  class="navbar navbar-expand-md navbar-light sticky-top">
+      <a href="{% url 'blog:home' %}"><img class="logo" src="{% static 'img/logo.png' %}" width="40" height="32" alt=""></a>
+      <div class="container-fluid text-center" style="display: flex; flex-direction: row-reverse;">
+        <a class="navbar-brand" href="#"></a>
+          <div class="d-flex flex-row-reverse">
+            <div type="button" class=" burg-btn-close " id = 'burg-btn-close' style="display: none;">
+              <a id="burg-btn-close" >x</a>
             </div>
-            <!-- центрирование ссылки -->
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link px-2 link-secondary" aria-current="page" href="#head1">Главная</a>
-                    </li>
-                </ul>
+            <button class="navbar-toggler d-block" id = 'burger-btn' type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
+          <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <div class="nav-item px-2">
+              <a class="nav-link px-2 link-secondary" href="#head1">Вверх</a>
             </div>
-        </div>
-    </nav>
-    <a id="burg-btn" class="lines">
-    </a>
-      <div class="burger-menu" id="burger-menu" style="display: none;">
-          <div class="conteiner-burg">
-            {% if checker_cookies == True %}
-            <h7>{{ users_cookies }}</h7>
-            <a href="http://127.0.0.1:8000/accounts/logout/">Log out</a>
-            {% else %}
-            <a href="http://127.0.0.1:8000/accounts/registration/">Sign up</a>
-            <a href="http://127.0.0.1:8000/accounts/login/">Log in</a>
-            {% endif %}
           </div>
       </div>
+    </nav>
+    <div class="burger-menu" id="burger-menu" style="display: none;">
+        <div class="conteiner-burg">
+          {% if request.user.is_authenticated %}
+          <h7>{{ users_name }}</h7>
+          <a href="{% url 'registration:logout' %}">Log out</a>
+          {% else %}
+          <a href="{% url 'registration:registration' %}">Sign up</a>
+          <a href="{% url 'registration:login' %}">Log in</a>
+          {% endif %}
+        </div>
+    </div>
     <script src="{% static 'js/app.js' %}">
     </script>
   {% endblock header %}
-    {% block content %}
-    
-    {% endblock content %}
+
+  {% block content %}
+  {% endblock content %}
 </body>
 </html>

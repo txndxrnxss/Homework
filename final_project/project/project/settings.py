@@ -83,10 +83,10 @@ DATABASES = {
             'NAME': 'blog_bd', 
             'USER': 'admin_blog_db', 
             'PASSWORD': 'root', 
-            'HOST': 'localhost'
+            'HOST': 'host.docker.internal',
+            'PORT': '5432',
         }
     }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

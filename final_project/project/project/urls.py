@@ -1,24 +1,18 @@
-"""
-URL configuration for project project.
+"""Настройка маршрутизации URL для Django-приложения blog."""
 
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.urls import path, include
 
+
 urlpatterns = [
+
+    # При переходе на '/blog/' происходит маршрутизация на файл urls.py из Django-приложения blog.
     path('blog/', include('blog.urls')),
+
+    # При переходе на '/accounts/' происходит маршрутизация на файл urls.py из приложения registration.
     path('accounts/', include('registration.urls')),
+
+    # При переходе на '/admin/' происходит перенаправление на стандартный интерфейс администратора Django.
     path('admin/', admin.site.urls)
+    
 ]

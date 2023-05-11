@@ -1,10 +1,11 @@
-from django.urls import path, re_path, include
+"""Настройка маршрутизации URL для Django-приложения registration."""
+
+from django.urls import path
 from . import views
 
 app_name = 'registration'
 urlpatterns = [
-    path('registration/', views.register, name='registration'),
-    path('xxx', views.registration, name='xxx'),
-    path('login/', views.login, name='login'),
-    path('logout/', views.logout_view, name='logout')
-] 
+    path('login/', views.user_login, name='login'),
+    path('logout/', views.logout_view, name='logout'),
+    path('registration/', views.register, name='registration')
+]

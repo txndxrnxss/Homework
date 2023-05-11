@@ -30,3 +30,11 @@ for (let anchor of anchors) {
     })
   })
 }
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  let container = document.querySelector('.all-comm');
+  let lastChild = container.lastElementChild;
+  lastChild.scrollIntoView({ block: 'end' });
+});
